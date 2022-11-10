@@ -7,12 +7,11 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
 
   const addUser = (newUser: User) => {
-    setUsers(prev => [...prev, newUser])
+    setUsers(prev => [...prev, newUser]);
   }
 
-
   return (
-    <div>
+    <div className="container mt-5 bg-info p-4 rounded-3">
       <main className="container-fluid">
         <div className="row mt-2">
           <div className="col">

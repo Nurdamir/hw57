@@ -15,30 +15,30 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
 
   const onTextFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const {name, value} = e.target;
-
     setUser(prev => ({...prev, [name]: value}));
   };
-
-  // const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const {name, value} = e.target;
-  //   setUser(prev => ({...prev, [name]: checked}))
-  // }
 
   const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({
-      id: Math.random().toString(),
-      ...user,
+        id: Math.random().toString(),
+        ...user,
       }
-    )
-    console.log(user)
+    );
+
+    setUser({
+      name: '',
+      email: '',
+      active: false,
+      role: '',
+    });
   };
 
   return (
     <form onSubmit={onFormSubmit}>
-      <h4>Add new user</h4>
+      <h4 className="text-center text-white">Add new user</h4>
 
-      <div className="form-group">
+      <div className="form-group mb-2">
         <label htmlFor="name" className="form-label">Name</label>
         <input
           required
@@ -48,7 +48,6 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
           className="form-control"
           value={user.name}
           onChange={onTextFieldChange}
-
         />
       </div>
       <div className="form-group mb-2">
@@ -62,26 +61,21 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
           value={user.email}
           onChange={onTextFieldChange}
         />
-
       </div>
-
       <div className="form-group mb-2">
         <label><input
-            type="checkbox"
-            name="active"
-            id="active"
-            className="me-2"
-            checked={user.active}
-            onChange={(e) => {
-              setUser(prev => ({...prev, active: e.target.checked}))
-            }}
-
-          />
+          type="checkbox"
+          name="active"
+          id="active"
+          className="me-2"
+          checked={user.active}
+          onChange={(e) => {
+            setUser(prev => ({...prev, active: e.target.checked}))
+          }}
+        />
           Active</label>
-
-
       </div>
-      
+
       <div className="form-group mb-2">
         <label>
           <select
@@ -97,10 +91,8 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
             <option>Admin</option>
           </select>
         </label>
-        
       </div>
       <button type="submit" className="btn btn-primary">Create</button>
-
     </form>
   );
 };
