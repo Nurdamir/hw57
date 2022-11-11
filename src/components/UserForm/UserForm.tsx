@@ -38,8 +38,8 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
     <form onSubmit={onFormSubmit}>
       <h4 className="text-center text-white">Add new user</h4>
 
-      <div className="form-group mb-2">
-        <label htmlFor="name" className="form-label">Name</label>
+      <div className="form-group mb-2 text-white">
+        <label htmlFor="name" className="form-label ">Name</label>
         <input
           required
           type="text"
@@ -51,7 +51,7 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
         />
       </div>
       <div className="form-group mb-2">
-        <label className="form-label" htmlFor="email">Email</label>
+        <label className="form-label text-white" htmlFor="email">Email</label>
         <input
           required
           type="email"
@@ -84,6 +84,7 @@ const UserForm: React.FC<FormProps> = ({onSubmit}) => {
             id="role"
             value={user.role}
             onChange={onTextFieldChange}
+            className="px-3 py-2 mb-2 fs-5 rounded-3"
           >
             <option disabled value="">Select a role!</option>
             <option>User</option>
